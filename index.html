@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://global.media.stux.music/icon.png">
+    <meta name="description" content="Stux.Music — Artist Page">
+    <title>Stux.Music — Artist Page</title>
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #121214; --surface: #1b1b1f; --text: #f2f2f5; --muted: #a8a8b3;
+            --border: rgba(255, 255, 255, 0.08); --accent: #4752ff; --accent-bg: rgba(71, 82, 255, 0.14);
+        }
+        [data-theme="light"] {
+            --bg: #f5f5fa; --surface: #ffffff; --text: #111118; --muted: #5a5a78;
+            --border: rgba(0, 0, 0, 0.07); --accent: #000ccc; --accent-bg: rgba(0, 12, 204, 0.1);
+        }
+
+        html, body {
+            background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif;
+            min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: ''; position: absolute; top: 50%; left: 50%; width: 900px; height: 500px; max-width: 140vw;
+            transform: translate(-50%, -50%); background: radial-gradient(ellipse, var(--accent) 0%, transparent 70%);
+            opacity: 0.14; pointer-events: none;
+        }
+
+        a, a:visited { color: var(--accent); text-decoration: none; }
+        a:hover, a:focus { opacity: 0.8; }
+
+        .wrapper { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 2rem 1.5rem; max-width: 560px; width: 100%; }
+
+        .card { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem 2rem 2rem; position: relative; overflow: hidden; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent); }
+
+        .badge {
+            display: inline-flex; align-items: center; gap: 8px; background: var(--accent-bg); border-radius: 100px;
+            padding: 6px 16px 6px 12px; font-size: 12px; font-weight: 600; color: var(--accent);
+            letter-spacing: 0.03em; margin-bottom: 1.75rem;
+        }
+        .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: blink 2.2s ease-in-out infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        .icon-wrap {
+            width: 72px; height: 72px; border-radius: 20px; background: var(--accent-bg); display: flex; align-items: center;
+            justify-content: center; margin: 0 auto 1.5rem; animation: float 3.5s ease-in-out infinite;
+        }
+        .icon-wrap i { font-size: 30px; color: var(--accent); }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+        h1 { font-size: clamp(1.6rem, 5vw, 2.1rem); font-weight: 800; line-height: 1.25; margin-bottom: 1rem; }
+        .tagline { color: var(--muted); font-size: 0.98rem; line-height: 1.7; max-width: 440px; margin: 0 auto 2rem; }
+
+        .btn-list { display: flex; flex-direction: column; gap: 10px; }
+        .btn-list a {
+            display: flex; align-items: center; gap: 10px; padding: 11px 16px; border-radius: 10px; justify-content: center;
+            font-size: 14px; font-weight: 500; border: 1px solid var(--border); background: var(--accent-bg); color: var(--accent);
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .btn-list a:hover { opacity: 0.85; }
+        .btn-list a i { font-size: 14px; }
+
+        #theme-toggle {
+            position: fixed; top: 14px; right: 14px; z-index: 100; background: var(--accent-bg); border: 1px solid var(--border);
+            border-radius: 50%; width: 38px; height: 38px; font-size: 15px; text-align: center; cursor: pointer;
+            padding: 0; color: var(--accent); display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+        }
+        #theme-toggle:hover { opacity: 0.85; }
+
+        .footer-links { font-size: 0.8rem; color: var(--muted); margin-top: 1.75rem; }
+    </style>
+</head>
+<body>
+    <button id="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="fa-solid fa-moon"></i></button>
+
+    <div class="wrapper">
+        <div class="card">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                No page yet
+            </div>
+
+            <div class="icon-wrap"><i class="fa-solid fa-circle-user"></i></div>
+
+            <h1>This artist hasn't set up their page yet.</h1>
+            <p class="tagline">Check back soon &mdash; they might be putting the finishing touches on it. If this is you, get in touch to claim your Stux.Music artist page.</p>
+
+            <div class="btn-list">
+                <a href="mailto:hello@stux.music" title="Claim this artist page">
+                    <i class="fa-solid fa-envelope"></i>
+                    Claim This Page
+                </a>
+                <a href="https://stux.music" target="_blank" rel="noopener" title="Browse Stux.Music">
+                    <i class="fa-solid fa-music"></i>
+                    Browse Stux.Music
+                </a>
+            </div>
+        </div>
+
+        <p class="footer-links">
+            &copy; 2022&ndash;2026 Stux.Music. All rights reserved. &middot;
+            <a href="changelog" id="version-link">Changelog</a> &middot;
+            <a href="legal">Boring Legal Stuff</a>
+        </p>
+    </div>
+
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var btn = document.getElementById('theme-toggle');
+            var icon = btn.querySelector('i');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var stored = localStorage.getItem('stuxmusic_theme');
+            var isDark = stored ? stored === 'dark' : prefersDark;
+
+            function apply(dark) {
+                root.setAttribute('data-theme', dark ? 'dark' : 'light');
+                icon.className = dark ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+                btn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+            }
+
+            apply(isDark);
+
+            btn.addEventListener('click', function () {
+                isDark = !isDark;
+                localStorage.setItem('stuxmusic_theme', isDark ? 'dark' : 'light');
+                apply(isDark);
+            });
+        })();
+    </script>
+    <script>
+        if (window.parent !== window) {
+            var parentOrigin = document.referrer ? new URL(document.referrer).origin : "*";
+            window.parent.postMessage(
+                { type: "page-title", title: document.title },
+                parentOrigin
+            );
+        }
+    </script>
+    <script>
+        fetch('VERSION.md')
+            .then(function (r) { return r.text(); })
+            .then(function (v) {
+                document.getElementById('version-link').textContent = 'v' + v.trim();
+            })
+            .catch(function () {});
+    </script>
+</body>
+</html>
