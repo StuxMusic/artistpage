@@ -5,6 +5,11 @@ All notable changes to Artist Page are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/) (MAJOR.MINOR.PATCH).
 
+## v1.0.2
+
+### Fixed
+- GitHub Pages was never actually enabled for this repo — `CNAME` already pointed `artistpage.stux.music` at GitHub's Pages IPs, so the domain resolved but served nothing real (no HTTP, and a TLS certificate mismatch over HTTPS). Enabled Pages using Actions-based deployment (`.github/workflows/pages.yml`), matching every other page repo in the org, and re-set the custom domain.
+
 ## v1.0.1
 
 ### Added
