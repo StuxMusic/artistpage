@@ -43,16 +43,27 @@
 
         .changelog-label-row { margin: 14px 0 8px; }
         .changelog-label-row:first-of-type { margin-top: 0; }
+        /* Fixed type palette: Added green, Changed blue, Fixed orange, Removed red, Security purple, Deprecated grey. */
         .changelog-label {
-            display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 5px; color: #fff;
+            --cl: #8a8a94;
+            display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; line-height: 1.4; text-transform: uppercase;
+            padding: 3px 10px; border-radius: 999px; color: var(--cl);
+            background: color-mix(in srgb, var(--cl) 14%, transparent);
+            border: 1px solid color-mix(in srgb, var(--cl) 45%, transparent);
         }
-        .changelog-label-added      { background: #2f8f4e; }
-        .changelog-label-changed    { background: #b8860b; }
-        .changelog-label-fixed      { background: var(--accent); }
-        .changelog-label-removed    { background: #6b6b6b; }
-        .changelog-label-deprecated { background: #a0522d; }
-        .changelog-label-security   { background: #6a1fb0; }
+        .changelog-label-added      { --cl: #2ecc71; }
+        .changelog-label-changed    { --cl: #3ba7ff; }
+        .changelog-label-fixed      { --cl: #ffa64d; }
+        .changelog-label-removed    { --cl: #ff4d4d; }
+        .changelog-label-security   { --cl: #b06bff; }
+        .changelog-label-deprecated { --cl: #8a8a94; }
+        /* Light theme: same hues, darkened for text contrast on a white surface. */
+        [data-theme="light"] .changelog-label-added      { --cl: #1e8449; }
+        [data-theme="light"] .changelog-label-changed    { --cl: #1a73c9; }
+        [data-theme="light"] .changelog-label-fixed      { --cl: #b35900; }
+        [data-theme="light"] .changelog-label-removed    { --cl: #cc2929; }
+        [data-theme="light"] .changelog-label-security   { --cl: #7d3cc9; }
+        [data-theme="light"] .changelog-label-deprecated { --cl: #5f5f6a; }
 
         .changelog-list { margin: 0 0 4px; padding-left: 20px; color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
         .changelog-list li { margin: 0 0 4px; }
@@ -113,7 +124,44 @@
 <script>
     (function () {
         var target = document.getElementById('changelog-body');
-        var CATEGORIES = ['Added', 'Changed', 'Fixed', 'Removed', 'Deprecated', 'Security'];
+        // Fixed render order; ### sections are sorted into this order within each release (unknown types last).
+        var CATEGORIES = ['Added', 'Changed', 'Fixed', 'Removed', 'Security', 'Deprecated'];
+
+        function sectionRank(headingLine) {
+            var word = headingLine.replace(/^###\s+/, '').trim().split(/[\s:]/)[0].toLowerCase();
+            for (var i = 0; i < CATEGORIES.length; i++) {
+                if (CATEGORIES[i].toLowerCase() === word) return i;
+            }
+            return CATEGORIES.length;
+        }
+        function sortSections(md) {
+            var lines = md.replace(/\r\n/g, '\n').split('\n');
+            var out = [];
+            var release = null;
+            function flush() {
+                if (!release) return;
+                var head = release[0], body = release.slice(1), idx = [];
+                body.forEach(function (l, i) { if (/^###\s+/.test(l)) idx.push(i); });
+                if (idx.length < 2) { out = out.concat(release); release = null; return; }
+                var chunks = idx.map(function (s, k) { return { lines: body.slice(s, k + 1 < idx.length ? idx[k + 1] : body.length), pos: k }; });
+                chunks.sort(function (a, b) { return (sectionRank(a.lines[0]) - sectionRank(b.lines[0])) || (a.pos - b.pos); });
+                out.push(head);
+                out = out.concat(body.slice(0, idx[0]));
+                chunks.forEach(function (c) {
+                    var l = c.lines.slice();
+                    while (l.length && l[l.length - 1].trim() === '') l.pop();
+                    out = out.concat(l, ['']);
+                });
+                release = null;
+            }
+            lines.forEach(function (l) {
+                if (/^##\s+/.test(l)) { flush(); release = [l]; }
+                else if (release) release.push(l);
+                else out.push(l);
+            });
+            flush();
+            return out.join('\n');
+        }
 
         function esc(s) {
             return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -125,7 +173,7 @@
             return s;
         }
         function renderChangelog(md) {
-            var lines = md.replace(/\r\n/g, '\n').trim().split('\n');
+            var lines = sortSections(md).trim().split('\n');
             var html = '';
             var inEntry = false;
             var inList = false;

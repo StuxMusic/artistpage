@@ -5,6 +5,15 @@ All notable changes to Artist Page are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/) (MAJOR.MINOR.PATCH).
 
+## v1.0.4
+
+### Added
+- `.gitignore` for OS/editor cruft, local `.env` overrides, and `node_modules/`
+
+### Changed
+- Changelog badges now use the fixed shared palette — Added green, Changed blue, Fixed orange, Removed red, Security purple, Deprecated grey — as tinted pills, with darker variants in light mode
+- `###` sections within each release are sorted into that same fixed order (Added, Changed, Fixed, Removed, Security, Deprecated) at render time, whatever order `CHANGELOG.md` lists them in; unknown types go last
+
 ## v1.0.3
 
 ### Fixed
