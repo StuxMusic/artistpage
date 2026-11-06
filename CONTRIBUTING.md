@@ -2,9 +2,9 @@
   <picture><source media="(prefers-color-scheme: dark)" srcset="https://global.media.stux.music/logo-light.png"><source media="(prefers-color-scheme: light)" srcset="https://global.media.stux.music/logo-dark.png"><img src="https://global.media.stux.music/logo-dark.png" height="80" alt="Stux.Music Logo"></picture>
 </p>
 
-# Contributing to Artist Page
+# Contributing to Stux.Music Artistpage
 
-This is a single-file HTML template, open for use and modification per the
+This is a small static HTML template (a placeholder page for a Stux.Music artist (`index.html`) plus its legal pages, changelog and 404), open for use and modification per the
 [License](README.md#license) section. This document is for anyone working on
 the template itself (not a downstream deployment).
 
