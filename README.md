@@ -2,7 +2,7 @@
   <picture><source media="(prefers-color-scheme: dark)" srcset="https://global.media.stux.music/logo-light.png"><source media="(prefers-color-scheme: light)" srcset="https://global.media.stux.music/logo-dark.png"><img src="https://global.media.stux.music/logo-dark.png" height="100" alt="Stux.Music Logo"></picture>
 </p>
 
-# Artist Page
+# Stux.Music Artistpage
 
 A clean and simple placeholder page for a Stux.Music artist who hasn't set up their page yet.
 
@@ -47,9 +47,9 @@ This project uses [Date Versioning](https://datevers.ing): each release is numbe
 
 ## License
 
-This project is open source and available for use and modification.
+Copyright © 2026 Stux.Group. This template is open source and available for use and modification.
 
 ---
 
-*Built & Maintained by <picture><source media="(prefers-color-scheme: dark)" srcset="https://global.media.stux.music/icon-light.png"><source media="(prefers-color-scheme: light)" srcset="https://global.media.stux.music/icon-dark.png"><img src="https://global.media.stux.music/icon-dark.png" height="14" alt="Stux.Music" valign="middle"></picture> [Stux.Music](https://github.com/StuxMusic), Hosted by <img src="https://github.com/Stuxedo.png" height="14" alt="Stuxedo" valign="middle"> [Stuxedo](https://stuxedo.com).  
+*Built & Maintained by <picture><source media="(prefers-color-scheme: dark)" srcset="https://global.media.stux.music/icon-light.png"><source media="(prefers-color-scheme: light)" srcset="https://global.media.stux.music/icon-dark.png"><img src="https://global.media.stux.music/icon-dark.png" height="14" alt="Stux.Music" valign="middle"></picture> [Stux.Music](https://github.com/StuxMusic), Hosted by <picture><source media="(prefers-color-scheme: dark)" srcset="https://global.media.stuxedo.com/icon-light.png"><source media="(prefers-color-scheme: light)" srcset="https://global.media.stuxedo.com/icon-dark.png"><img src="https://global.media.stuxedo.com/icon-dark.png" height="14" valign="middle" alt="Stuxedo"></picture> [Stuxedo](https://stuxedo.com).  
 Stux.Music is a part of the <picture><source media="(prefers-color-scheme: dark)" srcset="https://global.media.stux.group/icon-light.png"><source media="(prefers-color-scheme: light)" srcset="https://global.media.stux.group/icon-dark.png"><img src="https://global.media.stux.group/icon-dark.png" height="14" alt="Stux.Group" valign="middle"></picture> Stux.Group brand of businesses.*

@@ -1,9 +1,27 @@
 # Changelog
 
-All notable changes to Artist Page are documented here.
+All notable changes to Stux.Music Artistpage are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Date Versioning](https://datevers.ing) since v26.10.23 (`YY.MM.DD`, the UTC release date, with `-1`, `-2`… for later releases the same day); earlier releases used [Semantic Versioning](https://semver.org/).
+
+## v26.11.06-1
+
+### Fixed
+
+- CI's HTML check, which has failed since v26.10.23: html-validate's `valid-id` rule rejected the `discord:component-embed` id that Discord requires on the link-preview script. `.htmlvalidate.json` now uses the rule's `relaxed` mode (ids must be non-empty with no whitespace)
+
+## v26.11.06
+
+### Changed
+
+- The docs use the template's full name, Stux.Music Artistpage, instead of "Artist Page"
+- The README footer's Stuxedo icon follows GitHub's light or dark theme (the `<picture>` style, from Stuxedo's media host) instead of Stuxedo's GitHub avatar
+- CONTRIBUTING describes the template as a small static site (the page plus its legal pages, changelog and 404), not a single file
+
+### Fixed
+
+- The README's License section names the copyright holder, Stux.Group, alongside the existing use-and-modify terms
 
 ## v26.10.26
 
