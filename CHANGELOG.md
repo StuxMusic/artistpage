@@ -5,6 +5,12 @@ All notable changes to Stux.Music Artistpage are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Date Versioning](https://datevers.ing) since v26.10.23 (`YY.MM.DD`, the UTC release date, with `-1`, `-2`… for later releases the same day); earlier releases used [Semantic Versioning](https://semver.org/).
 
+## v26.11.06-1
+
+### Fixed
+
+- CI's HTML check, which has failed since v26.10.23: html-validate's `valid-id` rule rejected the `discord:component-embed` id that Discord requires on the link-preview script. `.htmlvalidate.json` now uses the rule's `relaxed` mode (ids must be non-empty with no whitespace)
+
 ## v26.11.06
 
 ### Changed
