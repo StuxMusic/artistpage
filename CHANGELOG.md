@@ -5,6 +5,12 @@ All notable changes to Stux.Music Artistpage are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Date Versioning](https://datevers.ing) since v26.10.23 (`YY.MM.DD`, the UTC release date, with `-1`, `-2`… for later releases the same day); earlier releases used [Semantic Versioning](https://semver.org/).
 
+## v26.11.07-1
+
+### Changed
+
+- The copyright holder is Stux.Music rather than Stux.Group, in `README.md`, `scripts/build-embeds.py` and `scripts/discord_embed.py`
+
 ## v26.11.07
 
 ### Changed
