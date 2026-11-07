@@ -4,8 +4,8 @@
 
 # Contributing to Stux.Music Artistpage
 
-This is a small static HTML template (a placeholder page for a Stux.Music artist (`index.html`) plus its legal pages, changelog and 404), open for use and modification per the
-[License](README.md#license) section. This document is for anyone working on
+This is a small static HTML template (a placeholder page for a Stux.Music artist (`index.html`) plus its legal pages, changelog and 404), made for Stux.Music's own sites (see the
+[Copyright](README.md#copyright) section). This document is for anyone working on
 the template itself (not a downstream deployment).
 
 ## Local setup
