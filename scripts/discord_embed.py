@@ -4,7 +4,7 @@ Spec: https://docs.discord.com/developers/link-previews/component-embeds
 The Open Graph tags stay as the fallback. The JSON is pre-built into the HTML by
 scripts/build-embeds.py (and scripts/build-sitemap.py for the sitemap page); the 404 page gets none.
 
-Copyright (c) 2026 Stux.Group. All rights reserved. Stux.Music is operated by Stux Group Ltd.
+Copyright (c) 2026 Stux.Music. All rights reserved. Stux.Music is operated by Stux Group Ltd.
 """
 import json
 import re

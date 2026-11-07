@@ -6,7 +6,7 @@ The title and description come from each page's own <title> and meta description
 either, run this again. sitemap/index.html is left to scripts/build-sitemap.py, which builds it.
 The helpers and this site's colour, icon and home-page text live in scripts/discord_embed.py.
 
-Copyright (c) 2026 Stux.Group. All rights reserved. Stux.Music is operated by Stux Group Ltd.
+Copyright (c) 2026 Stux.Music. All rights reserved. Stux.Music is operated by Stux Group Ltd.
 """
 import html
 import re

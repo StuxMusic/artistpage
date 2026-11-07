@@ -47,9 +47,9 @@ This project uses [Date Versioning](https://datevers.ing): each release is numbe
 
 Work happens on the `test` branch: releases are committed and tagged there, and go live when Leo merges its pull request into `main`. See [CONTRIBUTING.md](CONTRIBUTING.md#branches).
 
-## License
+## Copyright
 
-Copyright © 2026 Stux.Group. This template is open source and available for use and modification.
+Copyright © 2026 Stux.Music. All rights reserved.
 
 ---
 
