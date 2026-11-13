@@ -5,6 +5,19 @@ All notable changes to Stux.Music Artistpage are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Date Versioning](https://datevers.ing) since v26.10.23 (`YY.MM.DD`, the UTC release date, with `-1`, `-2`… for later releases the same day); earlier releases used [Semantic Versioning](https://semver.org/).
 
+## v26.11.13-1
+
+### Fixed
+
+- The registered office ends in "United Kingdom": 124 City Road, London, EC1V 2NX, England, United Kingdom
+
+## v26.11.13
+
+### Changed
+
+- Stux Group Ltd's registered office is now 124 City Road, London, EC1V 2NX, England (it was 82a James Carter Road, Mildenhall), in
+  the imprint page (its effective date is now November 2026). The company number and "registered in England and Wales" are unchanged
+
 ## v26.11.07-2
 
 ### Changed
