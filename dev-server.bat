@@ -1,30 +1,51 @@
 @echo off
 setlocal
-REM Soonpage - Local dev server (Windows)
-REM Usage: dev-server.bat [port]
-REM   port    default: 8000
+REM Artistpage - Local dev server (Windows)
+REM Usage: dev-server.bat [port] [--lan]
+REM   port            default: 8000
+REM   --lan           listen on all interfaces so phones/tablets on your network can
+REM                   connect (prints the addresses to open); default is 127.0.0.1 only
 REM
-REM This project is a single static HTML page (no build step, no
-REM server-side config), so there's no DEV_MODE/production split to
-REM toggle - this script just serves the repo root over HTTP so
-REM index.html can be opened without hand-configuring a static server
-REM each time.
+REM This project is static HTML (no build step, no server-side config), so
+REM there's no DEV_MODE/production split to toggle - this script just serves
+REM the repo root over HTTP so the pages can be opened without
+REM hand-configuring a static server.
 
 set "DIR=%~dp0"
-set "PORT=%~1"
-if "%PORT%"=="" set "PORT=8000"
+set "PORT=8000"
+set "HOST=127.0.0.1"
+set "LAN="
 
+:args
+if "%~1"=="" goto run
+if /i "%~1"=="--lan" (
+    set "LAN=1"
+    set "HOST=0.0.0.0"
+) else (
+    set "PORT=%~1"
+)
+shift
+goto args
+
+:run
 echo Serving %DIR% at http://127.0.0.1:%PORT%
+if defined LAN (
+    echo On your local network ^(--lan^), open one of these on the other device:
+    for /f "tokens=2 delims=:" %%a in ('ipconfig ^| findstr /c:"IPv4"') do (
+        for /f "tokens=* delims= " %%b in ("%%a") do echo     http://%%b:%PORT%
+    )
+    echo   ^(usually the 192.168.x.x one; allow PHP ^(or Python^) through the firewall if asked^)
+)
 
 where php >nul 2>&1
 if %errorlevel%==0 (
-    php -S 127.0.0.1:%PORT% -t "%DIR%"
+    php -S %HOST%:%PORT% -t "%DIR%"
     goto :eof
 )
 
 where python >nul 2>&1
 if %errorlevel%==0 (
-    python -m http.server %PORT% --directory "%DIR%" --bind 127.0.0.1
+    python -m http.server %PORT% --directory "%DIR%" --bind %HOST%
     goto :eof
 )
 
