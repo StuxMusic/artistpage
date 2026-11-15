@@ -11,7 +11,7 @@ the template itself (not a downstream deployment).
 ## Local setup
 
 There's no build step or dependencies — just clone the repo and run
-`./dev-server.sh [port]` (or `dev-server.bat [port]` on Windows), which starts
+`./dev-server.sh [port] [--lan]` (or `dev-server.bat [port] [--lan]` on Windows; `--lan` makes it reachable from phones and tablets on your network and prints the addresses to open), which starts
 a local static server pointed at the directory. Then open
 `http://127.0.0.1:8000`.
 
@@ -27,11 +27,12 @@ a local static server pointed at the directory. Then open
 - Each page except 404 carries a Discord link preview (`discord:component-embed`) built from its `<title>` and meta description: after changing either, run `python scripts/build-embeds.py`. The Stux.Music colour, icon and home-page text live in `scripts/discord_embed.py`. Keep the 404 page free of it, and keep each embed under 3,000 bytes.
 - Favicons are `favicon.ico`, `apple-touch-icon.png`, `site.webmanifest` and `assets/img/icon-*.png`, made from the Stux.Music icon; every `<head>` carries the same four icon tags (see `tests/site.sh`).
 
-## Branches
+## Branches and going live
 
-- Work on `test`, or on a feature branch off it. Never push to `main`
-- Changes reach `main` only through a pull request from `test` into `main`, which needs CI to pass and is reviewed and merged by Leo
-- Merging into `main` deploys the page to GitHub Pages; release commits and tags are made on `test` (`git push origin test --tags`) and go live when the pull request is merged
+- **`main` is what's live.** Nothing is pushed to it directly: it only changes when a pull request from `staging` is merged. Merging into `main` deploys the page to GitHub Pages.
+- **`staging` is the last check before live.** It only changes when a pull request from `test` is merged.
+- **Work happens on `test`**, or on a feature branch off `test` that's merged back into it. Releases are made on `test` too; `commit.sh` / `commit.bat` refuse to run on `staging` or `main`.
+- **Going live:** push `test` with its tag (`git push origin test --tags`), open a pull request into staging (`gh pr create --base staging --head test`), check staging once it's merged, then open one from staging into main (`gh pr create --base main --head staging`). CI runs on all three branches and on every pull request; Leo reviews and merges both pull requests.
 
 ## Versioning
 
